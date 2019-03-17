@@ -15,6 +15,14 @@ Use the up and down arrow keys to move the cursor up or down along the Channel L
 Press enter to select a channel and enable message filtering to only see messages destined for your selected channel. 
 
 Press tab to exit message filtering mode and receive all messages 
+
+Channels colored green are public channels the user you've authenticated as is a member of
+
+Channels colored yellow are private channels the user you've authenticated as is a member of
+
+Channels colored cyan are DMs to the user you've authenticated as
+
+
 TODO : Write a better readme ...
 
 ![](https://user-images.githubusercontent.com/29786827/54484700-dae76400-4828-11e9-9d53-37111a95ebfe.png)
