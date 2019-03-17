@@ -1,11 +1,12 @@
 # respite
 Read-only Slack RTM API client for spying on teams.
 
+TODO : Write a better readme ...
 
 ## Roadmap
-**Current stable version:** _0_
+**Current stable version:** _1.0_
 
-**Current dev version:** _0.1_
+**Current dev version:** _1.0_
 
 ### v1.0
 - Utilize legacy auth tokens to authenticate with Slack's RTM API
