@@ -10,17 +10,19 @@ Respite was developed to provide a useful tool for leveraging tokens acquired fr
 
 
 ## Using Respite
-Use the up and down arrow keys to move the cursor up or down along the Channel List. 
 
-Press enter to select a channel and enable message filtering to only see messages destined for your selected channel. 
+### Navigation
+- Use the up and down arrow keys to move the cursor up or down along the Channel List. 
 
-Press tab to exit message filtering mode and receive all messages 
+### Channel Colors
+- Channels colored green are public channels the user you've authenticated as is a member of
+- Channels colored yellow are private channels the user you've authenticated as is a member of
+- Channels colored cyan are DMs to the user you've authenticated as
 
-Channels colored green are public channels the user you've authenticated as is a member of
-
-Channels colored yellow are private channels the user you've authenticated as is a member of
-
-Channels colored cyan are DMs to the user you've authenticated as
+### Hotkeys
+- ^C - quit
+- Tab - disable message filtering
+- Enter - enable message filtering for channel under cursor
 
 
 TODO : Write a better readme ...
