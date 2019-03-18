@@ -1,17 +1,21 @@
 package main
 
 import (
+	"flag"
 	"fmt"
+	"io/ioutil"
 	"log"
 	"os"
 	"strconv"
 	"strings"
 	"time"
 
+	"github.com/BlacksunLabs/respite/mlog"
 	"github.com/jroimartin/gocui"
 	"github.com/nlopes/slack"
 )
 
+var logger *log.Logger
 var api *slack.Client
 var g *gocui.Gui
 
@@ -78,6 +82,12 @@ func messageFormatHumanReadable(msg slack.Msg) (hrMsg string) {
 
 	ut := time.Unix(tsInt64, 0)
 
+	team, err := api.GetTeamInfo()
+	if err != nil {
+		postToLog(g, err.Error())
+	}
+	logger.Printf("[%s] %s.slack.com #%s| [%s]> %s\n", ut, team.Domain, channel, username, text)
+
 	if filterChan == "" {
 		hrMsg = fmt.Sprintf("[%s] #%s| [%s]> %s", ut, channel, username, text)
 	} else if filterChan == channel {
@@ -116,7 +126,20 @@ func mapUsernamesToID(g *gocui.Gui) {
 	}
 }
 
+var flagLogfile string
+
+func init() {
+	flag.StringVar(&flagLogfile, "log", "", "path to log file")
+	flag.Parse()
+}
+
 func main() {
+	if flagLogfile != "" {
+		logger = mlog.Init(flagLogfile)
+	} else {
+		logger = log.New(ioutil.Discard, "", 0)
+		log.Println("Logging disabled")
+	}
 	api = slack.New(
 		os.Getenv("SLACK_TOKEN"),
 		slack.OptionLog(log.New(os.Stdout, "respite: ", log.Lshortfile|log.LstdFlags)),
